@@ -49,6 +49,15 @@ void t1()
     // this is an OSX specific method to open the authentication URL in a browser.
     // you should replace this with something appropriate for your OS.
     // note that SCOPE is a required value and will vary depending on what you want to do, API-wise.
+    //
+    // NOTE:
+    //
+    // were this a web application, rather than an interactive command-line tool, you'd presumably 
+    // save the state and record of what the user was doing before redirecting to the auth url. 
+    // Once the authorization was complete, the redirect url specified earlier would be called 
+    // with the authorization code. The app would use that code to get (and optionally save) 
+    // the access token, which should be used in the future to access that service on behalf of 
+    // the authorized user.
     Process.system("open '" + auth->get_auth_uri((["scope": Social.Google.Tasks.SCOPE_RO])) + "'");
 
     // not strictly necessary, but helps prevent confusion if the window takes a moment to open.
